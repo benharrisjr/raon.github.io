@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="clickQuestApp">
+    <head>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="styelsheet" href="css/click-quest-styles.css">
+    </head>
+    <body ng-controller="ClickQuestController">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 well">
+                    <h3>Upgrades</h3>
+                    <form>
+                        <div class="row" ng-repeat="(key,val) in availablePartyMembers track by $index">
+                            <label>{{val.cost}}</label><button type="button" class="btn btn-danger" ng-click="AddToParty(key,val.cost)">{{key}}</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9 well">
+                    <h3>Battle Screen</h3>
+                        <div class="col-md-4">
+                            <img height="100px" width="100px" />
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row" ng-repeat="battleMember in currentParty track by $index">
+                                <img  height="100px" width="100px" />
+                            </div>
+                        </div>
+                    <button type="button" class="btn btn-warning" ng-click="currentGold = currentGold + 100">Click for more gold</button>
+                    <button type="button" class="btn btn-primary" ng-click="AddToInventory()">Click for a new item</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 well">
+                    <h3>Inventory</h3>
+                    <p ng-repeat="item in inventory">{{item}}</p>
+                </div>
+                <div class="col-md-6 well">
+                    <p>Gold: {{currentGold}}</p>
+                    <p ng-repeat="member in currentParty track by $index">{{member}}</p>
+                </div>
+            </div>  
+        </div>
+        <script type="text/javascript" src="lib/angular/angular.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-animate.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-loader.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-resource.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="js/ClickQuestApp.js"></script>
+        <script src="js/ClickQuestController.js"></script>
+        <script type="text/javascript" src="lib/underscore/underscore.js"></script>
+    </body>
+</html>
